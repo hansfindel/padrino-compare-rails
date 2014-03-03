@@ -1,0 +1,29 @@
+h1
+  | Posts this far...
+table
+  tr
+    th Title
+    th Body
+    th
+  - @posts.each do |p|
+    tr
+      td
+        h2
+          = p.title
+      td 
+        p
+          = p.body 
+      td
+        = link_to "x", delete_post_path(p.id), {method: :delete}
+
+h3
+  | New post
+= form_for @post, :id => 'post_form' do |f|
+  p
+    = f.label :title, :caption => "Title: ", :class => 'post-title'
+    = f.text_field :title, :class => 'post-title', :placeholder => "Title"
+  p
+    = f.label :body
+    = f.text_area :body, :class => 'post-body', :placeholder => "Post body"
+  p
+    = f.submit "Send", :class => 'success', :id => 'image-button'
