@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    _size = 500
+    _size = 50
     _offset = ((params[:page] ? params[:page].to_i : 1) - 1) * _size
     @posts = Post.order(:id).limit(_size).offset(_offset)
     @post = Post.new
